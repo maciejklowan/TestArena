@@ -34,7 +34,11 @@
         </div>
         <div class="textLabelEditor">
           <div class="textLabelEditor_text"><?php echo $this->t('Opis') ?></div>
-          <div id="text" class="content_label"><?php echo $this->escapeQuotes($this->project->getDescription()) ?></div>
+          <div id="text" class="content_label"><?php
+          $parsedown      = new Parsedown();
+          $parsedown->setMarkupEscaped(true);
+          $parsedown->setBreaksEnabled(true);
+          echo $parsedown->text($this->project->getDescription()); ?></div>
         </div>
         <div class="textLabelEditor">
           <div class="textLabelEditor_text"><?php echo $this->t('Status') ?></div>

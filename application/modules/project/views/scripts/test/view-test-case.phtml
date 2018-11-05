@@ -47,16 +47,25 @@
         </div>
         <div class="textLabelPropertiesDiv">
           <div class="textLabelEditor_text"><?php echo $this->t('Założenia wstępne') ?>: </div>
-          <div id="text" class="content_label"> <?php echo nl2br($this->escapeQuotes($this->testCase->getPresuppositions())) ?></div>
+          <div id="text" class="content_label"> <?php $parsedown = new Parsedown();
+              $parsedown->setMarkupEscaped(true);
+              $parsedown->setBreaksEnabled(true);
+              echo $parsedown->text($this->testCase->getPresuppositions()); ?></div>
         </div>
         <div class="textLabelPropertiesDiv" style="border-bottom:0px solid;">
           <div class="textLabelEditor_text"><?php echo $this->t('Rezultat oczekiwany') ?>: </div>
-          <div id="text" class="content_label"> <?php echo nl2br($this->escapeQuotes($this->testCase->getResult())) ?></div>
+          <div id="text" class="content_label"> <?php $parsedown = new Parsedown();
+              $parsedown->setMarkupEscaped(true);
+              $parsedown->setBreaksEnabled(true);
+              echo $parsedown->text($this->testCase->getResult()); ?></div>
         </div>
         
         <div>
             <h5 class="break_page"><span aria-hidden="true" class="icon_pencil icon-20"></span><?php echo $this->t('Opis') ?></h5>
-            <div><?php echo nl2br($this->escapeQuotes($this->testCase->getDescription())) ?></div>
+            <div class="content_label"><?php $parsedown = new Parsedown();
+                $parsedown->setMarkupEscaped(true);
+                $parsedown->setBreaksEnabled(true);
+                echo $parsedown->text($this->testCase->getDescription()); ?></div>
         </div>        
         
       </div>

@@ -1155,6 +1155,7 @@ form.signin .remb .remember {
     /*display: table-cell;*/
     color:#000;
 }
+
 .content_label_title {
     border-bottom: 1px solid #dddddd;
     color: #454545 !important;
@@ -1164,6 +1165,34 @@ form.signin .remb .remember {
     padding: 0 0 6px;
     word-wrap: break-word;
 }
+
+.content_label ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.content_label li {
+    margin: 0;
+    padding: 0 7px;
+}
+
+.content_label a {
+    color: #0366d6;
+    text-decoration: none;
+}
+
+.content_label a:hover {
+    color: #0366d6;
+    text-decoration: underline;
+}
+
+
+
 .article_half {
   display: table;
   width: 50%;
@@ -1250,6 +1279,7 @@ form.signin .remb .remember {
     text-transform: uppercase;
     vertical-align: top;
 }
+
 .table-cell {
   display: table-cell;
 }

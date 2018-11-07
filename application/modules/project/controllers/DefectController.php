@@ -133,6 +133,7 @@ class Project_DefectController extends Custom_Controller_Action_Application_Proj
     $this->view->tags = $tagMapper->getByDefect($defect);
     $this->view->history = $historyMapper->getByDefect($defect);
     $this->view->defectUserPermission = new Application_Model_DefectUserPermission($defect, $this->_user, $this->_getAccessPermissionsForDefects());
+    $this->view->parse = $this->_parsedown();
   }
   
   public function listAjaxAction()

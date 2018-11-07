@@ -372,6 +372,7 @@ class Administration_ProjectController extends Custom_Controller_Action_Administ
     
   public function viewAction()
   {
+
     $project       = $this->_getValidProject();
     $projectMapper = new Administration_Model_ProjectMapper();
     $roleMapper    = new Administration_Model_RoleMapper();
@@ -399,6 +400,7 @@ class Administration_ProjectController extends Custom_Controller_Action_Administ
     $this->view->roles   = $roles;
     $this->view->form    = $form;
     $this->view->multiPrePopulatedUsers = $multiPrePopulatedUsers;
+    $this->view->parse = $this->_parsedown();
     
     if ($project->getStatusId() == Application_Model_ProjectStatus::FINISHED)
     {

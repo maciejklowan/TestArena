@@ -51,7 +51,7 @@
         </div>
         <div class="textLabelPropertiesDiv">
           <div class="textLabelEditor_text"><?php echo $this->t('Karta testu') ?>: </div>
-          <div id="text" class="content_label"><?php echo nl2br($this->escapeQuotes($this->exploratoryTest->getTestCard())) ?></div>
+          <div id="text" class="content_label"><?php echo $this->parse->text($this->exploratoryTest->getTestCard()); ?></div>
         </div>
       </div>
       

@@ -218,6 +218,7 @@ class Project_TaskController extends Custom_Controller_Action_Application_Projec
     $this->view->history = $historyMapper->getByTask($task);
     $this->view->taskTests = $taskTestMapper->getByTask($task);
     $this->view->taskUserPermission = new Application_Model_TaskUserPermission($task, $this->_user, $this->_getAccessPermissionsForTasks());
+    $this->view->parse = $this->_parsedown();
     
     $this->_setViewNavigation($task);
     $this->_prepareDefectsForView($task);

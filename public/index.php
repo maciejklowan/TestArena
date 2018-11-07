@@ -23,6 +23,7 @@ The full text of the GPL is in the LICENSE file.
 require_once realpath(dirname(__FILE__) . '/../const.php');
 require_once realpath(dirname(__FILE__) . '/../application/const.php');
 require_once _ROOT_DIR.DIRECTORY_SEPARATOR.'const.php';
+require_once _ROOT_DIR.DIRECTORY_SEPARATOR.'vendor/autoload.php';
 require_once _UTILS_PATH.'/Text.php';
 
 Utils_Text::checkMagicQuotes();

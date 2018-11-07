@@ -70,7 +70,7 @@
         </div>       
         <div class="textLabelEditor">
           <div class="textLabelEditor_text"><?php echo $this->t('Opis') ?></div>
-          <div id="text" class="content_label"><?php echo nl2br($this->release->getDescription()) ?></div>
+          <div id="text" class="content_label"><?php echo $this->parse->text($this->release->getDescription()); ?></div>
         </div>
       </div>
       

@@ -46,7 +46,8 @@
         </div>
         <div>
             <h5 class="break_page"><span aria-hidden="true" class="icon_pencil icon-20"></span><?php echo $this->t('Opis') ?></h5>
-            <div><?php echo $this->escapeQuotes($this->activeProject->getDescription()) ?></div>
+            <div class="content_label"><?php echo $this->parse->text($this->activeProject->getDescription()); ?>
+                ?></div>
         </div>
         
     <?php if (count($this->attachments)): ?>

@@ -71,7 +71,7 @@ class Project_EnvironmentController extends Custom_Controller_Action_Application
     {
       $filterForm->prepareSavedValues($filter->getData());
     }
-    
+
     $this->_setTranslateTitle();
     $this->view->environments = $list;
     $this->view->paginator = $paginator;
@@ -83,12 +83,14 @@ class Project_EnvironmentController extends Custom_Controller_Action_Application
   public function viewAction()
   {
     $environment = $this->_getValidEnvironmentForView();
+
     $this->_setTranslateTitle(array('name' => $environment->getName()), 'headTitle');
     $this->view->environment = $environment;
     $this->view->accessEnvironmentManagement = $this->_checkAccess(Application_Model_RoleAction::ENVIRONMENT_MANAGEMENT);
     $this->view->backUrl = $this->_getBackUrl('environment_list', $this->_projectUrl(array(), 'environment_list'));
+    $this->view->parse = $this->_parsedown();
   }
-  
+
   public function listAjaxAction()
   {
     $this->checkUserSession(true, true);

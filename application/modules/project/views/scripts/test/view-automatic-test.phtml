@@ -47,7 +47,7 @@
         </div>
         <div class="textLabelPropertiesDiv">
           <div class="textLabelEditor_text"><?php echo $this->t('Opis') ?>: </div>
-          <div id="text" class="content_label"> <?php echo nl2br($this->escapeQuotes($this->automaticTest->getDescription())) ?></div>
+          <div id="text" class="content_label"> <?php echo $this->parse->text($this->automaticTest->getDescription()); ?></div>
         </div>
       </div>
       

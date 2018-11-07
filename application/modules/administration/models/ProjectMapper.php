@@ -85,7 +85,6 @@ class Administration_Model_ProjectMapper extends Custom_Model_Mapper_Abstract
   {
     $db             = $this->_getDbTable();
     $adapter        = $db->getAdapter();
-    
     try
     {
       $adapter->beginTransaction();

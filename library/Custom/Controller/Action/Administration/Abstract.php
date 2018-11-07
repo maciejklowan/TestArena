@@ -22,4 +22,11 @@ The full text of the GPL is in the LICENSE file.
 */
 abstract class Custom_Controller_Action_Administration_Abstract extends Custom_Controller_Action_Abstract
 {
+    public function _parsedown()
+    {
+        $parsedown = new Parsedown();
+        $parsedown->setMarkupEscaped(true);
+        $parsedown->setBreaksEnabled(true);
+        return $parsedown;
+    }
 }

@@ -64,6 +64,7 @@ class Project_IndexController extends Custom_Controller_Action_Application_Proje
     $this->view->attachments = $attachmentMapper->getForProject($this->_project);
     $this->view->accessAddAttachment = $this->_checkAccess(Application_Model_RoleAction::PROJECT_ATTACHMENT);
     $this->view->accessProjectStatus = $this->_checkProjectStatusAccess(false);
+    $this->view->parse = $this->_parsedown();
   }
   
   public function activateAction()

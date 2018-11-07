@@ -109,6 +109,7 @@ class Project_ReleaseController extends Custom_Controller_Action_Application_Pro
     $this->view->accessReleaseManagement = $this->_checkAccess(Application_Model_RoleAction::RELEASE_MANAGEMENT);
     $this->view->accessReportGenerate = $this->_checkAccess(Application_Model_RoleAction::REPORT_GENERATE); 
     $this->view->backUrl = $this->_getBackUrl('release_list', $this->_projectUrl(array(), 'release_list'));
+    $this->view->parse = $this->_parsedown();
   }
     
   private function _getAddReleaseForm()

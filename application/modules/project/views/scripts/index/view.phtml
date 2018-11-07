@@ -46,11 +46,7 @@
         </div>
         <div>
             <h5 class="break_page"><span aria-hidden="true" class="icon_pencil icon-20"></span><?php echo $this->t('Opis') ?></h5>
-            <div class="content_label"><?php
-                $parsedown = new Parsedown();
-                $parsedown->setMarkupEscaped(true);
-                $parsedown->setBreaksEnabled(true);
-                echo $parsedown->text($this->activeProject->getDescription()); ?>
+            <div class="content_label"><?php echo $this->parse->text($this->activeProject->getDescription()); ?>
                 ?></div>
         </div>
         

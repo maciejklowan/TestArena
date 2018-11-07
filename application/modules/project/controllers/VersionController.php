@@ -86,6 +86,7 @@ class Project_VersionController extends Custom_Controller_Action_Application_Pro
     $this->view->version = $version;
     $this->view->accessVersionManagement = $this->_checkAccess(Application_Model_RoleAction::VERSION_MANAGEMENT);
     $this->view->backUrl = $this->_getBackUrl('version_list', $this->_projectUrl(array(), 'version_list'));
+    $this->view->parse = $this->_parsedown();
   }
   
   public function listAjaxAction()

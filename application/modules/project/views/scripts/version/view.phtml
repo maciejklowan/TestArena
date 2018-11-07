@@ -49,10 +49,7 @@
       <div class="contentEditUser_right">        
         <div class="textLabelEditor">
           <div class="textLabelEditor_text"><?php echo $this->t('Opis') ?></div>
-          <div id="text" class="content_label"><?php $parsedown = new Parsedown();
-              $parsedown->setMarkupEscaped(true);
-              $parsedown->setBreaksEnabled(true);
-              echo $parsedown->text($this->version->getDescription()); ?></div>
+          <div id="text" class="content_label"><?php echo $this->parse->text($this->version->getDescription()); ?></div>
         </div>
       </div>
       

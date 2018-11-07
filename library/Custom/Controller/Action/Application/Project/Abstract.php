@@ -99,4 +99,12 @@ abstract class Custom_Controller_Action_Application_Project_Abstract extends Cus
   {
     return (null === $this->_project) ? false : true ;
   }
+
+  public function _parsedown()
+  {
+      $parsedown = new Parsedown();
+      $parsedown->setMarkupEscaped(true);
+      $parsedown->setBreaksEnabled(true);
+      return $parsedown;
+  }
 }

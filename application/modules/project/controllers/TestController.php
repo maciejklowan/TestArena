@@ -129,6 +129,7 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
     $this->view->test = $test;
     $this->view->backUrl = $this->_getBackUrl('test_list', $this->_projectUrl(array(), 'test_list'));
     $this->view->testUserPermission = new Application_Model_TestUserPermission($test, $this->_user, $this->_getAccessPermissionsForTests());
+    $this->view->parse = $this->_parsedown();
   }
   
   public function viewTestCaseAction()
@@ -154,6 +155,7 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
     $this->view->testCase = $testCase;
     $this->view->backUrl = $this->_getBackUrl('test_list', $this->_projectUrl(array(), 'test_list'));
     $this->view->testUserPermission = new Application_Model_TestUserPermission($testCase, $this->_user, $this->_getAccessPermissionsForTests());
+    $this->view->parse = $this->_parsedown();
   }
   
   public function viewExploratoryTestAction()
@@ -179,6 +181,7 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
     $this->view->exploratoryTest = $exploratoryTest;
     $this->view->backUrl = $this->_getBackUrl('test_list', $this->_projectUrl(array(), 'test_list'));
     $this->view->testUserPermission = new Application_Model_TestUserPermission($exploratoryTest, $this->_user, $this->_getAccessPermissionsForTests());
+    $this->view->parse = $this->_parsedown();
   }
   
   public function viewAutomaticTestAction()
@@ -204,6 +207,7 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
     $this->view->automaticTest = $automaticTest;
     $this->view->backUrl = $this->_getBackUrl('test_list', $this->_projectUrl(array(), 'test_list'));
     $this->view->testUserPermission = new Application_Model_TestUserPermission($automaticTest, $this->_user, $this->_getAccessPermissionsForTests());
+    $this->view->parse = $this->_parsedown();
   }
   
   public function viewChecklistAction()
@@ -229,6 +233,7 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
     $this->view->checklist = $checklist;
     $this->view->backUrl = $this->_getBackUrl('test_list', $this->_projectUrl(array(), 'test_list'));
     $this->view->testUserPermission = new Application_Model_TestUserPermission($checklist, $this->_user, $this->_getAccessPermissionsForTests());
+    $this->view->parse = $this->_parsedown();
   }
   
   public function addOtherTestAction()

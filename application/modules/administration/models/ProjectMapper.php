@@ -97,7 +97,8 @@ class Administration_Model_ProjectMapper extends Custom_Model_Mapper_Abstract
         'name'                      => $project->getName(),
         'description'               => $project->getDescription(),
         'open_status_color'         => $project->getOpenStatusColor(),
-        'in_progress_status_color'  => $project->getInProgressStatusColor()
+        'in_progress_status_color'  => $project->getInProgressStatusColor(),
+        'checkboxes'                => $project->getCheckboxes()
       );
 
       $id = $db->insert($data);
@@ -143,17 +144,16 @@ class Administration_Model_ProjectMapper extends Custom_Model_Mapper_Abstract
     try
     {
       $adapter->beginTransaction();
-
       $data = array(
         'prefix'                    => $project->getPrefix(),
         'name'                      => $project->getName(),
         'description'               => $project->getDescription(),
         'open_status_color'         => $project->getOpenStatusColor(),
-        'in_progress_status_color'  => $project->getInProgressStatusColor()
+        'in_progress_status_color'  => $project->getInProgressStatusColor(),
+        'checkboxes'                => $this->packCheckboxes()
       );
 
       $db->update($data, array('id = ?' => $project->getId()));
-      
       return $adapter->commit();
     }
     catch (Exception $e)
@@ -262,12 +262,13 @@ class Administration_Model_ProjectMapper extends Custom_Model_Mapper_Abstract
     $file->setDescription($project->getExtraData('fileDescription'));
 
     $tempIniFilePath = $file->getNewFullPath(Utils_Text::generateToken());
-    
+
     $csvFiles = array();
     $data = array(
       'description'               => $project->getDescription(),
       'open_status_color'         => $project->getOpenStatusColor(),
       'in_progress_status_color'  => $project->getInProgressStatusColor(),
+      'checkboxes'                => $project->getCheckboxes(),
       'csvFile'                   => array() 
     );
     

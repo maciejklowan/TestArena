@@ -2237,3 +2237,13 @@ var showErrorMessages = function(messages) {
       projectAddDocumentationFileBrowserSelectFiles(fileNames);
     }
   };
+
+  function checklist() {
+    var i = 1;
+    $('#add_checklist_button').click(function() {
+
+        var structure = $('<div><input type="text" name="checkbox"></div>');
+        $('#checklist').append(structure);
+        i++;
+    });
+  }

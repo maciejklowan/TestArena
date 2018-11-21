@@ -103,7 +103,8 @@ class Administration_Model_ProjectDbTable extends Custom_Model_DbTable_Criteria_
         'name',
         'description',
         'open_status_color',
-        'in_progress_status_color'
+        'in_progress_status_color',
+        'checkboxes'
       ))
       ->where('p.id = ?', $id)
       ->limit(1)
@@ -122,7 +123,8 @@ class Administration_Model_ProjectDbTable extends Custom_Model_DbTable_Criteria_
         'name',
         'description',
         'open_status_color',
-        'in_progress_status_color'
+        'in_progress_status_color',
+        'checkboxes'
       ))
       ->where('id = ?', $id)
       ->limit(1);

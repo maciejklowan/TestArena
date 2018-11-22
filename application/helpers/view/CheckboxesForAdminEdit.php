@@ -20,16 +20,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 The full text of the GPL is in the LICENSE file.
 */
-class Zend_View_Helper_UnpackCheckboxesForm extends Zend_View_Helper_Abstract
+class Zend_View_Helper_CheckboxesForAdminEdit extends Zend_View_Helper_Abstract
 {
-    public function unpackCheckboxesForm($list)
+    public function checkboxesForAdminEdit($list)
     {
         $unpacked_list = explode('&', $list);
-        $array = array();
+        $array = [];
         foreach ($unpacked_list as $entry)
         {
-            $label = substr($entry, 0, -2);
-            array_push($array, $label);
+            array_push($array, substr($entry, 0, -2));
         }
         return $array;
     }

@@ -49,13 +49,8 @@
               <div class="textLabelEditor_text"><?php echo $this->t('Lista') ?></div><form method="post" onsubmit="window.location.reload()"><ul>
               <?php foreach ($this->unpackCheckboxes($this->activeProject->getCheckboxes()) as $checkbox => $value): ?>
               <?php if (!empty($checkbox)): ?>
-              <?php if ($value === '0'): ?>
                   <li><input type="hidden" name="<?php echo $checkbox ?>" value="0">
-                      <input type="checkbox" name="<?php echo $checkbox ?>" value="1"><label><?php echo $checkbox ?></label></li>
-              <?php elseif ($value === '1'): ?>
-                      <input type="hidden" name="<?php echo $checkbox ?>" value="0">
-                  <li><input type="checkbox" name="<?php echo $checkbox ?>" value="1" checked><label><?php echo $checkbox ?></label></li>
-              <?php endif; ?>
+                      <input type="checkbox" name="<?php echo $checkbox ?>" value="1" <?php if ($value === '1'): echo 'checked'; endif ?>><label><?php echo $checkbox ?></label></li>
                       <?php else: continue; ?>
                       <?php endif ?>
               <?php endforeach; ?>

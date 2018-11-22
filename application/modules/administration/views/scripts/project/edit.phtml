@@ -73,9 +73,8 @@
         <div class="formContainer full">
           <span>
               <button type="button" id="add_checklist_button"><?php echo $this->t('Dodaj listę') ?></button>
-              <div id="checklist"><?php foreach($this->unpackCheckboxesForm($this->checkbox) as $label):?>
-                  <?php if (empty($label)): continue ?>
-                  <?php else: ?>
+              <div id="checklist"><?php foreach($this->checkboxesForAdminEdit($this->checkbox) as $label):?>
+                  <?php if (!empty($label)): ?>
                   <div><input type="text" name="checkbox" value="<?php echo $label ?>"></div>
                   <?php endif ?>
                   <?php endforeach; ?>

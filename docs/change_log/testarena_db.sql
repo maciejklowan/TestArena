@@ -671,7 +671,8 @@ CREATE TABLE `project` (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `description` text NOT NULL,
   `open_status_color` varchar(7) NOT NULL,
-  `in_progress_status_color` varchar(7) NOT NULL
+  `in_progress_status_color` varchar(7) NOT NULL,
+  `checkboxes` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

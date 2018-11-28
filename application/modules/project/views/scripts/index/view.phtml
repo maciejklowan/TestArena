@@ -39,15 +39,29 @@
         <div class="textLabelEditor">
           <div class="textLabelEditor_text"><?php echo $this->t('Status') ?></div>
           <div id="text" class="content_label"><?php echo $this->statusT($this->activeProject->getStatus(), 'PROJECT') ?></div>
-        </div>        
+        </div>
         <div class="textLabelEditor">
           <div class="textLabelEditor_text"><?php echo $this->t('Prefiks') ?></div>
           <div id="text" class="content_label"><?php echo $this->activeProject->getPrefix() ?></div>
         </div>
+          <?php if(!empty($this->activeProject->getCheckboxes())): ?>
+          <div class="textLabelEditor">
+              <div class="textLabelEditor_text"><?php echo $this->t('Lista') ?></div><form method="post" onsubmit="window.location.reload()"><ul>
+              <?php foreach ($this->unpackCheckboxes($this->activeProject->getCheckboxes()) as $checkbox => $value): ?>
+              <?php if (!empty($checkbox)): ?>
+                  <li><input type="hidden" name="<?php echo $checkbox ?>" value="0">
+                      <input type="checkbox" name="<?php echo $checkbox ?>" value="1" <?php if ($value === '1'): echo 'checked'; endif ?>><label><?php echo $checkbox ?></label></li>
+                      <?php else: continue; ?>
+                      <?php endif ?>
+              <?php endforeach; ?>
+              </ul>
+              <input type="submit" id="add_checklist_button" value="<?php echo $this->t("Zapisz") ?>">
+                  </form>
+          </div>
+          <?php endif ?>
         <div>
             <h5 class="break_page"><span aria-hidden="true" class="icon_pencil icon-20"></span><?php echo $this->t('Opis') ?></h5>
-            <div class="content_label"><?php echo $this->parse->text($this->activeProject->getDescription()); ?>
-                ?></div>
+            <div class="content_label"><?php echo $this->parse->text($this->activeProject->getDescription()); ?></div>
         </div>
         
     <?php if (count($this->attachments)): ?>

@@ -113,4 +113,24 @@ class Project_Model_ProjectMapper extends Custom_Model_Mapper_Abstract
     
     return $this->_getDbTable()->update($data, $where) == 1;
   }
+  
+  public function saveCheckboxes(Application_Model_Project $project, $post)
+  {
+    $db             = $this->_getDbTable();
+    $adapter        = $db->getAdapter();
+
+    try
+    {
+      $adapter->beginTransaction();
+      $data = ['checkboxes' => $post];
+
+      $db->update($data, array('id = ?' => $project->getId()));
+      return $adapter->commit();
+    }
+    catch (Exception $e)
+    {
+      $adapter->rollback();
+      throw $e;
+    }
+  }
 }

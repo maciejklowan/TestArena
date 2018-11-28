@@ -29,13 +29,14 @@ class Application_Model_ProjectDbTable extends Custom_Model_DbTable_Abstract
     $sql = $this->select()
       ->from(array('p' => $this->_name), array(
         'id', 
-        'prefix', 
-        'status', 
-        'create_date', 
-        'name', 
+        'prefix',
+        'status',
+        'create_date',
+        'name',
         'open_status_color',
         'in_progress_status_color',
-        'description'
+        'description',
+        'checkboxes'
       ))
       ->joinLeft(array('r' => 'role'), 'p.id=r.project_id', array())
       ->join(array('ru' => 'role_user'), 'r.id=ru.role_id', array())

@@ -40,7 +40,7 @@ class Project_IndexController extends Custom_Controller_Action_Application_Proje
       }
     }
   }
-  
+
   public function userListAjaxAction()
   {
     $this->checkUserSession(true, true);
@@ -58,13 +58,14 @@ class Project_IndexController extends Custom_Controller_Action_Application_Proje
     $this->_setCurrentBackUrl('file_dwonload');
     $roleMapper = new Project_Model_RoleMapper();
     $attachmentMapper = new Project_Model_AttachmentMapper();
-
     $this->_setTranslateTitle();
     $this->view->roles = $roleMapper->getListByProjectId($this->_project);
     $this->view->attachments = $attachmentMapper->getForProject($this->_project);
     $this->view->accessAddAttachment = $this->_checkAccess(Application_Model_RoleAction::PROJECT_ATTACHMENT);
     $this->view->accessProjectStatus = $this->_checkProjectStatusAccess(false);
     $this->view->parse = $this->_parsedown();
+    $this->packCheckboxesView();
+
   }
   
   public function activateAction()
@@ -256,4 +257,14 @@ class Project_IndexController extends Custom_Controller_Action_Application_Proje
     
     return true;
   }
+
+  private function packCheckboxesView()
+  {
+    if (!empty(Zend_Controller_Request_Http::getRawBody())) {
+      $projectMapper = new Project_Model_ProjectMapper();
+      $projectMapper->saveCheckboxes($this->_project, Zend_Controller_Request_Http::getRawBody());
+      $this->redirect()->toUrl('/');
+    }
+  }
+
 }

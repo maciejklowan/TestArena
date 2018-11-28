@@ -27,9 +27,16 @@ class Zend_View_Helper_UnpackCheckboxes extends Zend_View_Helper_Abstract
         $unpacked_list = explode('&', $list);
         foreach ($unpacked_list as $pair)
         {
-            $temp = explode('=', $pair);
-            $array[$temp[0]] = $temp[1];
+            try
+            {
+                $temp = explode('=', $pair);
+                $checkbox[$temp[0]] = $temp[1];
+            }
+            catch (Exception $e)
+            {
+                echo "Unable to unpack checkbox. " . $e . "<br />";
+            }
         }
-        return $array;
+        return $checkbox;
     }
 }

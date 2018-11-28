@@ -25,11 +25,11 @@ class Zend_View_Helper_CheckboxesForAdminEdit extends Zend_View_Helper_Abstract
     public function checkboxesForAdminEdit($list)
     {
         $unpacked_list = explode('&', $list);
-        $array = [];
+        $checkbox = [];
         foreach ($unpacked_list as $entry)
         {
-            array_push($array, substr($entry, 0, -2));
+            array_push($checkbox, substr($entry, 0, -2));
         }
-        return $array;
+        return $checkbox;
     }
 }

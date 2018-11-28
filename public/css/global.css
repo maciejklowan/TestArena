@@ -3984,3 +3984,17 @@ li.token-input-input-token-facebook {
     width: 30px;
 }
 
+#button-bold, #button-italic, #button-list, #button-link, #button-quote, #button-header, #button-rule {
+    border: 1px solid;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 0;
+    width: 26px;
+    height: 26px;
+}
+
+#button-italic {
+    font-style: italic;
+}
+

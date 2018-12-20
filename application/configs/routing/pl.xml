@@ -1609,6 +1609,34 @@
           <projectPrefix>[a-z\d]{0,6}</projectPrefix>
         </reqs>
       </test_add_other_test_process>
+
+      <test_add_test_group>
+        <route>:projectPrefix/test/add_test_group/:id</route>
+        <type>Zend_Controller_Router_Route</type>
+        <defaults>
+          <module>project</module>
+          <controller>test</controller>
+          <action>add-test-group</action>
+          <id>0</id>
+        </defaults>
+        <reqs>
+          <projectPrefix>[a-z\d]{0,6}</projectPrefix>
+          <id>\d+</id>
+        </reqs>
+      </test_add_test_group>
+
+      <test_add_test_group_process>
+        <route>:projectPrefix/test/adding_test_group</route>
+        <type>Zend_Controller_Router_Route</type>
+        <defaults>
+          <module>project</module>
+          <controller>test</controller>
+          <action>add-test-group-process</action>
+        </defaults>
+        <reqs>
+          <projectPrefix>[a-z\d]{0,6}</projectPrefix>
+        </reqs>
+      </test_add_test_group_process>
       
       <test_add_test_case>
         <route>:projectPrefix/test/add_test_case/:id</route>

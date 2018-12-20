@@ -81,6 +81,22 @@
               </div>
             </div>
             <?php endif; ?>
+              <?php if(!empty($this->defect->getCheckboxes())): ?>
+                  <div class="textLabelEditor">
+                      <div class="textLabelEditor_text"><?php echo 'Bip' //$this->t('Lista') ?></div><form method="post" onsubmit="window.location.reload()"><ul>
+                              <?php foreach ($this->unpackCheckboxes($this->defect->getCheckboxes()) as $checkbox => $value): ?>
+                                  <?php if (!empty($checkbox)): ?>
+                                      <li><input type="hidden" name="<?php echo $checkbox ?>" value="0">
+                                          <input type="checkbox" name="<?php echo $checkbox ?>" value="1" <?php if ($value === '1'): echo 'checked'; endif ?>><label><?php echo $checkbox ?></label></li>
+                                  <?php else: continue; ?>
+                                  <?php endif ?>
+                              <?php endforeach; ?>
+                          </ul>
+                          <input type="submit" id="add_checklist_button" value="<?php echo 'Blep' //this->t("Zapisz") ?>">
+                      </form>
+                  </div>
+              <?php endif ?>
+
           </div>
           <div class="rightside">
             <div class="textLabelPropertiesDiv">

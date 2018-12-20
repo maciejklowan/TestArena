@@ -26,7 +26,8 @@ class Application_Model_Test extends Custom_Model_Standard_Abstract implements C
     'ordinal_no'      => 'ordinalNo',
     'create_date'     => 'createDate',
     'family_id'       => 'familyId',
-    'current_version' => 'currentVersion'
+    'current_version' => 'currentVersion',
+    'test_group'      => 'testGroup'
   );
   
   private $_id              = null;
@@ -40,6 +41,7 @@ class Application_Model_Test extends Custom_Model_Standard_Abstract implements C
   private $_description     = null;
   private $_familyId        = null;
   private $_currentVersion  = true;
+  private $_testGroup       = null;
   
   private $_testRuns        = array();
   private $_newVersion      = false;
@@ -126,6 +128,11 @@ class Application_Model_Test extends Custom_Model_Standard_Abstract implements C
   public function getCurrentVersion()
   {
     return $this->_currentVersion;
+  }
+
+  public function getTestGroup()
+  {
+      return $this->_testGroup;
   }
   
   public function getTestRuns()
@@ -231,6 +238,12 @@ class Application_Model_Test extends Custom_Model_Standard_Abstract implements C
   {
     $this->_currentVersion = (bool)$currentVersion;
     return $this;
+  }
+
+  public function setTestGroup($testGroup)
+  {
+      $this->_testGroup = $testGroup;
+      return $this;
   }
   
   public function setTestRuns($testRuns)

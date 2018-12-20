@@ -27,6 +27,7 @@ class Zend_View_Helper_TestAddRouteName extends Zend_View_Helper_Abstract
   const ROUTE_EXPLORATORY_TEST_ADD = 'test_add_exploratory_test';  
   const ROUTE_AUTOMATIC_TEST_ADD   = 'test_add_automatic_test';
   const ROUTE_CHECKLIST_VIEW        = 'test_add_checklist';
+  const ROUTE_TEST_GROUP_ADD        = 'test_add_test_group';
   
   public function testAddRouteName(Custom_Interface_Test $test)
   {
@@ -46,6 +47,9 @@ class Zend_View_Helper_TestAddRouteName extends Zend_View_Helper_Abstract
       
       case Application_Model_TestType::CHECKLIST:
         return self::ROUTE_CHECKLIST_VIEW;
+
+      case Application_Model_TestType::GROUP:
+        return self::ROUTE_TEST_GROUP_ADD;
     }
     
     return null;

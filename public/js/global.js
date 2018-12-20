@@ -2287,3 +2287,7 @@ function textFormatterButtons() {
         wrapText('description', '---', '');
     });
 }
+
+function insertGroup(group) {
+    document.getElementById('test_group').value = group;
+}

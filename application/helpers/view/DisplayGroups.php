@@ -20,23 +20,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 The full text of the GPL is in the LICENSE file.
 */
-class Zend_View_Helper_UnpackCheckboxes extends Zend_View_Helper_Abstract
+class Zend_View_Helper_DisplayGroups extends Zend_View_Helper_Abstract
 {
-    public function unpackCheckboxes($list)
+    public function displayGroups($groups)
     {
-        $unpacked_list = explode('&', $list);
-        foreach ($unpacked_list as $pair)
+
+        foreach($groups as $group)
         {
-            try
-            {
-                $temp = explode('=', $pair);
-                $checkbox[$temp[0]] = $temp[1];
-            }
-            catch (Exception $e)
-            {
-                echo "Unable to unpack checkbox. " .$e . "<br />";
-            }
+                echo "<a href='#' onclick=\"insertGroup('$group')\">".$group."</a> ";
         }
-        return $checkbox;
     }
 }

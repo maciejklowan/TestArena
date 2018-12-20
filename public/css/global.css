@@ -342,6 +342,18 @@ img {
     padding: 8px 23px;
 }
 
+#add_checklist_button {
+    border: 1px solid;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11.5px;
+}
+
+#add_checklist_button:hover {
+    color: #ff0054;
+}
+
 table {
     border-spacing: 0;
     font-size: 13px;
@@ -1220,7 +1232,7 @@ form.signin .remb .remember {
 }
 .button_link, .filterButton button{
     border-left: 1px solid #ddd;
-    color: #777;
+    color: white;
     cursor: pointer;
     font-family: "Roboto";
     font-size: 12px;
@@ -1231,8 +1243,8 @@ form.signin .remb .remember {
     text-transform: uppercase;
 }
 .button_link:hover {
-    background-color: #f2f2f2;
-    color: #000;
+    /*background-color: #197df6;*/
+    color: white;
 }
 .filterButton button {
     border: 1px solid #bdc7d8;
@@ -1333,7 +1345,9 @@ form.signin .remb .remember {
     position: absolute;
     right: 5px;
     top: 0;
+    background-color: #1e75d6;
 }
+
 .button_link_ul {
   margin: 15px 0;
 }
@@ -3616,6 +3630,17 @@ li.token-input-input-token-facebook {
     padding: 2px 5px;
     vertical-align: top;
 }
+
+.group_link {
+    background-color: #1e75d6;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 5px;
+    margin-left: 5px;
+    margin-bottom: 4px;
+}
+
 .status_red {
     background-color: #ef2641;
     border-radius: 3px;
@@ -3972,3 +3997,20 @@ li.token-input-input-token-facebook {
     width: 30px;
 }
 
+#button-bold, #button-italic, #button-list, #button-link, #button-quote, #button-header, #button-rule {
+    border: 1px solid;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 0;
+    width: 26px;
+    height: 26px;
+}
+
+#button-italic {
+    font-style: italic;
+}
+
+.groupSuggestions {
+    font-size: 11px;
+}

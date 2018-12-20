@@ -36,7 +36,8 @@ class Project_Model_TestDbTable extends Custom_Model_DbTable_Criteria_Abstract
         'type',
         'create_date',
         'name',
-        'attachmentCount' => new Zend_Db_Expr($attachmentCount)
+        'attachmentCount' => new Zend_Db_Expr($attachmentCount),
+        'test_group'
       ))
       ->join(array('p' => 'project'), 't.project_id = p.id', $this->_createAlias('project', array(
         'prefix'
@@ -82,7 +83,8 @@ class Project_Model_TestDbTable extends Custom_Model_DbTable_Criteria_Abstract
         'status',
         'type',
         'create_date',
-        'name'
+        'name',
+        'test_group'
       ))
       ->join(array('p' => 'project'), 't.project_id = p.id', $this->_createAlias('project', array(
         'prefix'
@@ -136,7 +138,8 @@ class Project_Model_TestDbTable extends Custom_Model_DbTable_Criteria_Abstract
         'ordinal_no',
         'name',
         'type',
-        'status'
+        'status',
+        'test_group'
       ))
       ->join(array('u' => 'user'), 't.author_id = u.id', $this->_createAlias('author', array(
         'id'
@@ -164,7 +167,8 @@ class Project_Model_TestDbTable extends Custom_Model_DbTable_Criteria_Abstract
         'status',
         'family_id',
         'current_version',
-        'description'
+        'description',
+        'test_group'
       ))
       ->join(array('p' => 'project'), 't.project_id = p.id', $this->_createAlias('project', array(
         'prefix'
@@ -199,7 +203,8 @@ class Project_Model_TestDbTable extends Custom_Model_DbTable_Criteria_Abstract
         'status',
         'family_id',
         'current_version',
-        'description'
+        'description',
+        'test_group'
       ))
       ->join(array('p' => 'project'), 't.project_id = p.id', $this->_createAlias('project', array(
         'prefix'
@@ -237,7 +242,8 @@ class Project_Model_TestDbTable extends Custom_Model_DbTable_Criteria_Abstract
         'create_date',
         'status',
         'family_id',
-        'current_version'
+        'current_version',
+        'test_group'
       ))
       ->join(array('et' => 'exploratory_test'), 'et.test_id = t.id', array(
         'duration',
@@ -274,7 +280,8 @@ class Project_Model_TestDbTable extends Custom_Model_DbTable_Criteria_Abstract
         'status',
         'family_id',
         'current_version',
-        'description'
+        'description',
+        'test_group'
       ))
       ->join(array('p' => 'project'), 't.project_id = p.id', $this->_createAlias('project', array(
         'prefix'
@@ -309,7 +316,8 @@ class Project_Model_TestDbTable extends Custom_Model_DbTable_Criteria_Abstract
         'status',
         'family_id',
         'current_version',
-        'description'
+        'description',
+        'test_group'
       ))
       ->join(array('p' => 'project'), 't.project_id = p.id', $this->_createAlias('project', array(
         'prefix'
@@ -342,7 +350,8 @@ class Project_Model_TestDbTable extends Custom_Model_DbTable_Criteria_Abstract
         'description',
         'ordinal_no',
         'family_id',
-        'current_version'
+        'current_version',
+        'test_group'
       ))
       ->join(array('u' => 'user'), 't.author_id = u.id', $this->_createAlias('author', array(
         'id'
@@ -368,7 +377,8 @@ class Project_Model_TestDbTable extends Custom_Model_DbTable_Criteria_Abstract
         'description',
         'ordinal_no',
         'family_id',
-        'current_version'
+        'current_version',
+        'test_group'
       ))
       ->join(array('tc' => 'test_case'), 'tc.test_id = t.id', array(
           'presuppositions',
@@ -398,7 +408,8 @@ class Project_Model_TestDbTable extends Custom_Model_DbTable_Criteria_Abstract
         'name',
         'ordinal_no',
         'family_id',
-        'current_version'
+        'current_version',
+        'test_group'
       ))
       ->join(array('et' => 'exploratory_test'), 'et.test_id = t.id', array(
           'duration',
@@ -429,7 +440,8 @@ class Project_Model_TestDbTable extends Custom_Model_DbTable_Criteria_Abstract
         'description',
         'ordinal_no',
         'family_id',
-        'current_version'
+        'current_version',
+        'test_group'
       ))
       ->join(array('u' => 'user'), 't.author_id = u.id', $this->_createAlias('author', array(
         'id'
@@ -455,7 +467,8 @@ class Project_Model_TestDbTable extends Custom_Model_DbTable_Criteria_Abstract
         'description',
         'ordinal_no',
         'family_id',
-        'current_version'
+        'current_version',
+        'test_group'
       ))
       ->join(array('u' => 'user'), 't.author_id = u.id', $this->_createAlias('author', array(
         'id'

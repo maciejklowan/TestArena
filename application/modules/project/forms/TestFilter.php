@@ -23,6 +23,7 @@ The full text of the GPL is in the LICENSE file.
 class Project_Form_TestFilter extends Custom_Form_AbstractFilter
 {
   protected $_userList;
+  protected $_groupList;
   
   public function __construct($options = null)
   {    
@@ -32,6 +33,7 @@ class Project_Form_TestFilter extends Custom_Form_AbstractFilter
     }
 
     $this->_userList = $options['userList'];
+    $this->_groupList = $options['groupList'];
     parent::__construct($options);
   }
   
@@ -71,8 +73,21 @@ class Project_Form_TestFilter extends Custom_Form_AbstractFilter
         0 => $t->translate('[Wszyscy]', array(), 'general')
       )
     ));
-    
+
     $this->getElement('author')->addMultiOptions($this->_userList);
+
+    $this->addElement('select', 'group', array(
+        'required' => false,
+        'multiOptions' => array(
+            0 => '[Wszyscy]'
+        )
+    ));
+    
+//    $this->getElement('group')->addMultiOptions($this->_groupList);
+    foreach ($this->_groupList as $group)
+    {
+        $this->getElement('group')->addMultiOption($group, $group);
+    }
   }
   
   public function getDefaultValues()
@@ -81,7 +96,8 @@ class Project_Form_TestFilter extends Custom_Form_AbstractFilter
       'resultCountPerPage' => 10,
       'search' => '',
       'type' => 0,
-      'author' => 0
+      'author' => 0,
+      'group' => 0
     ));
   }
 }

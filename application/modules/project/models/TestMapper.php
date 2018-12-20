@@ -27,37 +27,53 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
   public function getAll(Zend_Controller_Request_Abstract $request, Application_Model_Project $project)
   {
     $db = $this->_getDbTable();
-    
     $adapter = new Zend_Paginator_Adapter_DbSelect($db->getSqlAll($request));
     $adapter->setRowCount($db->getSqlAllCount($request));
- 
     $paginator = new Zend_Paginator($adapter);
     $paginator->setCurrentPageNumber($request->getParam('page'));
     $resultCountPerPage = (int)$request->getParam('resultCountPerPage');
     $paginator->setItemCountPerPage($resultCountPerPage > 0 ? $resultCountPerPage : 10);
-    
-    $list = array();
-    
-    foreach ($paginator->getCurrentItems() as $row)
+    $rows = $paginator->getCurrentItems();
+    $list = [];
+
+    foreach($rows as $row)
     {
-      $test = new Application_Model_Test($row);
-      $test->setProjectObject($project);
-      $list[$test->getId()] = $test;
+      if (!empty($request->getParams()['group']))
+      {
+        $explode_group = explode(', ', $row['test_group']);
+        foreach ($explode_group as $group)
+        {
+          if ($request->getParams()['group'] === $group) 
+          {
+            $test = new Application_Model_Test($row);
+            $test->setProjectObject($project);
+            $list[$test->getId()] = $test;
+          } 
+          else
+          {
+            continue;
+          }
+        }
+      }
+      else
+      {
+        $test = new Application_Model_Test($row);
+        $test->setProjectObject($project);
+        $list[$test->getId()] = $test;
+      }
     }
-    
-    return array($list, $paginator);
+      return array($list, $paginator);
   }
   
   public function getAllIds(Zend_Controller_Request_Abstract $request)
   {
-    $rows = $this->_getDbTable()->getAllIds($request);    
+    $rows = $this->_getDbTable()->getAllIds($request);
     $list = array();
     
     foreach ($rows->toArray() as $row)
     {
-      $list[] = $row['id'];
+        $list[] = $row['id'];
     }
-    
     return $list;
   }
   
@@ -274,6 +290,7 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
       'name'            => $test->getName(),
       'description'     => $test->getDescription(),
       'current_version' => (int)$test->getCurrentVersion(),
+      'test_group'      => $test->getTestGroup(),
       'ordinal_no'      => 0
     );
     
@@ -421,7 +438,8 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
     $data = array(
       'project_id'  => $testOther->getProjectId(),
       'name'        => $testOther->getName(),
-      'description' => $testOther->getDescription()
+      'description' => $testOther->getDescription(),
+      'test_group'  => $testOther->getTestGroup()
     );
     
     try
@@ -456,7 +474,8 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
     $data = array(
       'project_id'  => $testCase->getProjectId(),
       'name'        => $testCase->getName(),
-      'description' => $testCase->getDescription()
+      'description' => $testCase->getDescription(),
+      'test_group'  => $testCase->getTestGroup()
     );
     
     try
@@ -498,7 +517,8 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
     
     $data = array(
       'project_id' => $exploratoryTest->getProjectId(),
-      'name'       => $exploratoryTest->getName()
+      'name'       => $exploratoryTest->getName(),
+      'test_group'  => $exploratoryTest->getTestGroup()
     );
     
     try
@@ -540,7 +560,8 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
     $data = array(
       'project_id'  => $testAutomatic->getProjectId(),
       'name'        => $testAutomatic->getName(),
-      'description' => $testAutomatic->getDescription()
+      'description' => $testAutomatic->getDescription(),
+      'test_group'  => $testAutomatic->getTestGroup()
     );
     
     try
@@ -574,7 +595,8 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
     $data = array(
       'project_id'  => $checklist->getProjectId(),
       'name'        => $checklist->getName(),
-      'description' => $checklist->getDescription()
+      'description' => $checklist->getDescription(),
+      'test_group'  => $checklist->getTestGroup()
     );
     
     try
@@ -613,7 +635,8 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
       'create_date'     => date('Y-m-d H:i:s'),
       'current_version' => true,
       'ordinal_no'      => $test->getOrdinalNo(),
-      'family_id'       => $test->getFamilyId()
+      'family_id'       => $test->getFamilyId(),
+      'test_group'      => $test->getTestGroup()
     );
 
     try
@@ -655,7 +678,8 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
       'create_date'     => date('Y-m-d H:i:s'),
       'current_version' => true,
       'ordinal_no'      => $testCase->getOrdinalNo(),
-      'family_id'       => $testCase->getFamilyId()
+      'family_id'       => $testCase->getFamilyId(),
+      'test_group'      => $testCase->getTestGroup()
     );
     
     try
@@ -700,7 +724,8 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
       'create_date'     => date('Y-m-d H:i:s'),
       'current_version' => true,
       'ordinal_no'      => $exploratoryTest->getOrdinalNo(),
-      'family_id'       => $exploratoryTest->getFamilyId()
+      'family_id'       => $exploratoryTest->getFamilyId(),
+      'test_group'      => $exploratoryTest->getTestGroup()
     );
     
     try
@@ -745,7 +770,8 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
       'create_date'     => date('Y-m-d H:i:s'),
       'current_version' => true,
       'ordinal_no'      => $automaticTest->getOrdinalNo(),
-      'family_id'       => $automaticTest->getFamilyId()
+      'family_id'       => $automaticTest->getFamilyId(),
+      'test_group'      => $automaticTest->getTestGroup()
     );
     
     try
@@ -787,7 +813,8 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
       'create_date'     => date('Y-m-d H:i:s'),
       'current_version' => true,
       'ordinal_no'      => $checklist->getOrdinalNo(),
-      'family_id'       => $checklist->getFamilyId()
+      'family_id'       => $checklist->getFamilyId(),
+      'test_group'      => $checklist->getTestGroup()
     );
     
     try
@@ -878,5 +905,43 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
     }
 
     return $list;
+  }
+
+  public function getByProjectAsOptions(Application_Model_Project $project)
+  {
+    $rows = $this->_getDbTable()->getByProjectAsOptions($project->getId());
+
+    if ($rows === null)
+    {
+      return false;
+    }
+
+    $list = [];
+
+    foreach ($rows->toArray() as $row)
+    {
+      $list[$row['id']] = $row['name'];
+    }
+      return $list;
+  }
+
+  public function getTestGroupNames()
+  {
+    $db = $this->_getDbTable();
+    $adapter = $db->getAdapter();
+    $select = new Zend_Db_Select($adapter);
+    $query = $select->from('test')->columns(['test_group']);
+    $groups = $query->query()->fetchAll();
+    $group_list = [];
+    foreach ($groups as $group_name)
+      {
+        if (in_array($group_name['test_group'], $group_list) or $group_name['test_group'] == null)
+        {
+          continue;
+        }
+        array_push($group_list, $group_name['test_group']);
+      }
+    $group_implode = implode(', ', $group_list);
+    return explode(', ', $group_implode);
   }
 }

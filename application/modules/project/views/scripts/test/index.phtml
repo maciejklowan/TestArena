@@ -35,6 +35,7 @@
         <div class="filter">
           <div><?php echo $this->formLabel('search', $this->generalT('Szukaj')) ?></div>
           <div class="search_in_filter"><?php echo $this->filterForm->search->renderViewHelper() ?><a href="#" id="j_searchButton" class="icon_search icon-20"></a></div>
+
         </div>
       </div>
       
@@ -49,10 +50,15 @@
           <div class="custom-select-xsmall"><?php echo $this->filterForm->author->renderViewHelper() ?></div>
         </div>
 
+      <div class="filter">
+          <div><?php echo $this->formLabel('group', $this->t('Grupa')) ?></div>
+          <div class="custom-select-xsmall"><?php echo $this->filterForm->group->renderViewHelper() ?></div>
+      </div>
+
         <div class="filter">
           <div><?php echo $this->formLabel('resultCountPerPage', $this->generalT('Wyniki')) ?></div>
           <div class="custom-select-xsmall"><?php echo $this->filterForm->resultCountPerPage->renderViewHelper() ?></div>
-        </div>
+        </div><div style="float: right;"><input type="text"><label>Dodaj grupę</label></div>
 
         <?php echo $this->partial('partials/filter-buttons.phtml'); ?>
       </div>
@@ -71,6 +77,7 @@
             <th><?php echo $this->sortingControl('Nazwa', 'test_name', 'sorting.phtml', $this->request) ?></th>
             <th class="attachment_column"></th>
             <th><?php echo $this->t('Typ') ?></th>
+            <th>Grupa</th>
             <th><?php echo $this->sortingControl('Autor', $this->createSortedFieldName('test', 'email', array('author')), 'sorting.phtml', $this->request) ?></th>
             <th><?php echo $this->sortingControl('Data utworzenia', 'test_create_date', 'sorting.phtml', $this->request) ?></th>
             <th class="action_list_th"><?php echo $this->t('Akcje') ?></th>
@@ -95,6 +102,7 @@
               <?php endif; ?>
             </td>
             <td class="t_status"><?php echo $this->typeT($test->getType(), 'TEST') ?></td>
+              <td class="t_status"><?php echo $test->getTestGroup() ?></td>
             <td class="t_user"><?php echo $this->escapeQuotes($test->getAuthor()->getFullname()) ?></td>
           <td class="t_date" title="<?php echo $test->getCreateDate() ?>"><?php echo $test->getCreateDate(true) ?></td>
             <td>
@@ -140,7 +148,7 @@
         <a id="j_multiSelect_unselectAllButton_test<?php echo $this->activeProject->getId(); ?>" class="button" href="#"><?php echo $this->generalT('Wyczyść wybrane') ?></a>
       </div>
 
-      <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination-filter.phtml', $this->request->getParams()); ?>
+      <?php if (count($this->tests) > 9): echo $this->paginationControl($this->paginator, 'Sliding', 'pagination-filter.phtml', $this->request->getParams()); endif?>
 
     </form>
     <?php else: ?>

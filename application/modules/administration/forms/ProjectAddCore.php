@@ -50,6 +50,18 @@ class Administration_Form_ProjectAddCore extends Custom_Form_SubFormAbstract
       )
     ));
 
+      $this->addElement('text', 'checkbox', array(
+          'belongsTo'   => 'step1[stepOne]',
+          'required'    => true,
+          'maxlength'   => 6,
+          'filters'     => array('StringTrim'),
+          'validators'  => array(
+              'ProjectPrefix',
+              array('UniqueProjectPrefix', true),
+              array('StringLength', false, array(2, 6, 'UTF-8')),
+          )
+      ));
+
     $this->addElement('hidden', 'openStatusColor', array(
       'belongsTo'   => 'step1[stepOne]',
       'required'    => true,

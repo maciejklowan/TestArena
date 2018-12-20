@@ -24,9 +24,26 @@
             <?php endforeach; ?>
           </span>
         </div>
-          
+
         <div class="formContainer full">
           <span>
+            <?php echo $this->form->test_group->renderViewHelper() ?>
+              <?php echo $this->formLabel('test_group', $this->t('Grupa')) ?>
+              <?php foreach ($this->form->getErrors('name') as $error): ?>
+                  <div class="error_msg"><?php echo $this->errorT($error, array(
+                          'min' => $this->form->getElement('group')->getValidator('StringLength')->getMin(),
+                          'max' => $this->form->getElement('group')->getValidator('StringLength')->getMax()
+                      )) ?></div>
+              <?php endforeach; ?>
+              <div class="groupSuggestions"><?php $this->displayGroups($this->groups) ?></div>
+          </span>
+        </div>
+
+        <?php echo $this->partial('partials/format-buttons.phtml') ?>
+
+        <div class="formContainer full">
+            <script>textFormatterButtons()</script>
+            <span>
             <?php echo $this->form->description->renderViewHelper() ?>
             <?php echo $this->formRequiredLabel('description', $this->t('Opis')) ?>  
             <?php foreach ($this->form->getErrors('description') as $error): ?>

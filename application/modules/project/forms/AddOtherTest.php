@@ -61,6 +61,16 @@ class Project_Form_AddOtherTest extends Custom_Form_Abstract
         array('StringLengthOneCharacterLineBreaks', false, array(1, 5000, 'UTF-8')),
       ),
     ));
+
+    $this->addElement('text', 'test_group', array(
+      'maxlength'   => 1000,
+      'required'    => false,
+      'filters'     => array('StringTrim'),
+      'validators'  => array(
+        'SimpleText',
+          array('StringLengthOneCharacterLineBreaks', false, array(1, 1000, 'UTF-8')),
+        ),
+      ));
     
     $this->addElement('hidden', 'attachmentIds', array(
       'required'  => false,

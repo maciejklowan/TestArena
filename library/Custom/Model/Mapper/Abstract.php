@@ -57,4 +57,22 @@ abstract class Custom_Model_Mapper_Abstract
     }
     return $this->_dbTable;
   }
+
+  protected function packCheckboxes()
+  {
+    $list = explode('&', Zend_Controller_Request_Http::getRawBody());
+    foreach ($list as &$list_element)
+    {
+      if (substr($list_element, -2) != '=0')
+      {
+        $list_element = $list_element . '=0';
+      }
+      else
+      {
+        $list_element = $list_element . '=1';
+      }
+    }
+    $list_trimmed = implode('&',preg_grep('/checkbox/', $list));
+    return str_replace('checkbox=', '', $list_trimmed);
+  }
 }

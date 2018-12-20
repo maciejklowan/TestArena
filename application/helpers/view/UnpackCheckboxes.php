@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright © 2014 TestArena 
+Copyright © 2014 TestArena
 
 This file is part of TestArena.
 
@@ -20,21 +20,23 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 The full text of the GPL is in the LICENSE file.
 */
-class Application_Model_TestType extends Custom_Model_Dictionary_Abstract
+class Zend_View_Helper_UnpackCheckboxes extends Zend_View_Helper_Abstract
 {
-  const OTHER_TEST        = 1;
-  const TEST_CASE         = 2;
-  const EXPLORATORY_TEST  = 3;
-  const AUTOMATIC_TEST    = 4;
-  const CHECKLIST         = 5;
-  const GROUP             = 6;
-  
-  protected $_names = array(
-    self::OTHER_TEST        => 'OTHER_TEST',
-    self::TEST_CASE         => 'TEST_CASE',
-    self::EXPLORATORY_TEST  => 'EXPLORATORY_TEST',
-    self::AUTOMATIC_TEST    => 'AUTOMATIC_TEST',
-    self::CHECKLIST         => 'CHECKLIST',
-    self::GROUP             => 'GROUP'
-  );
+    public function unpackCheckboxes($list)
+    {
+        $unpacked_list = explode('&', $list);
+        foreach ($unpacked_list as $pair)
+        {
+            try
+            {
+                $temp = explode('=', $pair);
+                $checkbox[$temp[0]] = $temp[1];
+            }
+            catch (Exception $e)
+            {
+                echo "Unable to unpack checkbox. " .$e . "<br />";
+            }
+        }
+        return $checkbox;
+    }
 }

@@ -72,6 +72,25 @@
 
         <div class="formContainer full">
           <span>
+              <button type="button" id="add_checklist_button"><?php echo $this->t('Dodaj listę') ?></button>
+              <div id="checklist"><?php foreach($this->checkboxesForAdminEdit($this->checkbox) as $label):?>
+                  <?php if (!empty($label)): ?>
+                  <div><input type="text" name="checkbox" value="<?php echo $label ?>"></div>
+                  <?php endif ?>
+                  <?php endforeach; ?>
+                  <script>checklist();</script></div>
+          </span>
+        </div>
+        <div class="format_buttons"><button type="button" id="button-bold">B</button>
+        <button type="button" id="button-italic">I</button>
+        <button type="button" id="button-list">LI</button>
+        <button type="button" id="button-link">&lt;A&gt;</button>
+        <button type="button" id="button-quote">&gt;</button>
+        <button type="button" id="button-header">H1</button>
+        <button type="button" id="button-rule">HR</button></div>
+        <div class="formContainer full">
+            <script>textFormatterButtons()</script>
+          <span>
             <?php echo $this->form->description->renderViewHelper() ?>
             <?php echo $this->formLabel('description', $this->t('Opis')) ?>
             <?php foreach ($this->form->getErrors('description') as $error): ?>

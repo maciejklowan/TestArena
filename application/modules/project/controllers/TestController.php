@@ -44,9 +44,11 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
   private function _getFilterForm()
   {
     $userMapper = new Project_Model_UserMapper();
+    $testMapper = new Project_Model_TestMapper();
     return new Project_Form_TestFilter(array(
       'action'   => $this->_projectUrl(array(), 'test_list'),
-      'userList' => $userMapper->getByProjectAsOptions($this->_project)
+      'userList' => $userMapper->getByProjectAsOptions($this->_project),
+      'groupList'=> $testMapper->getTestGroupNames()
     ));
   }
   
@@ -130,6 +132,7 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
     $this->view->backUrl = $this->_getBackUrl('test_list', $this->_projectUrl(array(), 'test_list'));
     $this->view->testUserPermission = new Application_Model_TestUserPermission($test, $this->_user, $this->_getAccessPermissionsForTests());
     $this->view->parse = $this->_parsedown();
+    $this->view->groups = $testMapper->getTestGroupNames();
   }
   
   public function viewTestCaseAction()
@@ -242,6 +245,8 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
     
     $this->_setTranslateTitle();
     $this->view->form = $this->_getAddOtherTestForm();
+    $testMapper = new Project_Model_TestMapper();
+    $this->view->groups = $testMapper->getTestGroupNames();
   }
   
   public function addOtherTestProcessAction()
@@ -293,6 +298,8 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
     
     $this->_setTranslateTitle();
     $this->view->form = $this->_getAddTestCaseForm();
+    $testMapper = new Project_Model_TestMapper();
+    $this->view->groups = $testMapper->getTestGroupNames();
   }
   
   public function addTestCaseProcessAction()
@@ -343,6 +350,8 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
     
     $this->_setTranslateTitle();
     $this->view->form = $this->_getAddExploratoryTestForm();
+    $testMapper = new Project_Model_TestMapper();
+    $this->view->groups = $testMapper->getTestGroupNames();
   }
   
   public function addExploratoryTestProcessAction()
@@ -445,6 +454,8 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
     
     $this->_setTranslateTitle();
     $this->view->form = $this->_getAddChecklistForm();
+    $testMapper = new Project_Model_TestMapper();
+    $this->view->groups = $testMapper->getTestGroupNames();
   }
   
   public function addChecklistProcessAction()
@@ -493,12 +504,15 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
   public function editOtherTestAction()
   {
     $test = $this->_getValidOtherTestForEdit();
+
     $form = $this->_getEditOtherTestForm($test);
     $rowData = $test->getExtraData('rowData');
     $form->populate($form->prepareAttachmentsFromDb($rowData['attachments']));
     
     $this->_setTranslateTitle();
     $this->view->form = $form;
+    $testMapper = new Project_Model_TestMapper();
+    $this->view->groups = $testMapper->getTestGroupNames();
   }
   
   public function editOtherTestProcessAction()
@@ -570,6 +584,8 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
     $form = $this->_getEditTestCaseForm($testCase);
     $rowData = $testCase->getExtraData('rowData');
     $form->populate($form->prepareAttachmentsFromDb($rowData['attachments']));
+    $testMapper = new Project_Model_TestMapper();
+    $this->view->groups = $testMapper->getTestGroupNames();
     
     $this->_setTranslateTitle();
     $this->view->form = $form;
@@ -647,6 +663,8 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
     
     $this->_setTranslateTitle();
     $this->view->form = $form;
+    $testMapper = new Project_Model_TestMapper();
+    $this->view->groups = $testMapper->getTestGroupNames();
   }
   
   public function editExploratoryTestProcessAction()
@@ -795,6 +813,8 @@ class Project_TestController extends Custom_Controller_Action_Application_Projec
     
     $this->_setTranslateTitle();
     $this->view->form = $form;
+    $testMapper = new Project_Model_TestMapper();
+    $this->view->groups = $testMapper->getTestGroupNames();
   }
   
   public function editChecklistProcessAction()

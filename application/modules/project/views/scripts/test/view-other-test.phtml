@@ -35,7 +35,7 @@
     </nav>
 
     <div class="textLabelEditor">
-      <div id="text" class="content_label_title"><span class="object_nr"><?php echo $this->escapeQuotes($this->test->getObjectNumber()) ?></span> <?php echo $this->escapeQuotes($this->test->getName()) ?></div>
+      <div id="text" class="content_label_title"><span class="object_nr"><?php echo $this->escapeQuotes($this->test->getObjectNumber()) ?></span> <?php echo $this->escapeQuotes($this->test->getName()) ?><?php if (!empty($this->test->getTestGroup())): ?><span class="group_link"><a href="<?php echo $this->backUrl . "?filterAction=1&group=" . $this->test->getTestGroup() ?>"><?php echo $this->test->getTestGroup() ?></a></span><?php endif; ?></div>
     </div>     
     
     <div class="contentLRtable">

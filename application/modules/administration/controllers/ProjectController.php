@@ -271,6 +271,7 @@ class Administration_ProjectController extends Custom_Controller_Action_Administ
     $project = $this->_getValidNotFinishedProject();
     $this->_setTranslateTitle();
     $this->view->form = $this->_getEditProjectForm($project);
+    $this->view->checkbox = $project->getCheckboxes();
   }
 
   public function editProcessAction()

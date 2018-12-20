@@ -39,6 +39,7 @@ class Application_Model_Project extends Custom_Model_Standard_Abstract
   private $_description           = null;
   private $_openStatusColor       = null;
   private $_inProgressStatusColor = null;
+  private $_checkboxes            = null;
   
   private $_projectElements = array();  
   private $_releases = array();
@@ -89,6 +90,11 @@ class Application_Model_Project extends Custom_Model_Standard_Abstract
   public function getInProgressStatusColor()
   {
     return $this->_inProgressStatusColor;
+  }
+
+  public function getCheckboxes()
+  {
+    return $this->_checkboxes;
   }
   
   function getInternalDefects()
@@ -168,6 +174,12 @@ class Application_Model_Project extends Custom_Model_Standard_Abstract
   public function setInProgressStatusColor($inProgressStatusColor)
   {
     $this->_inProgressStatusColor = $inProgressStatusColor;
+    return $this;
+  }
+
+  public function setCheckboxes($checkboxes)
+  {
+    $this->_checkboxes = $checkboxes;
     return $this;
   }
   

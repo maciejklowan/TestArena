@@ -34,3 +34,4 @@
 /public/upload/avatars/user/temp/*
 !public/upload/avatars/user/temp/.gitkeep
 #
+/vendor

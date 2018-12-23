@@ -272,7 +272,7 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
       'author_id'       => $test->getAuthorId(),
       'create_date'     => date('Y-m-d H:i:s'),
       'name'            => $test->getName(),
-      'description'     => $test->getDescription(),
+      'description'     => $test->getDescription() == null ? "" : $test->getDescription(),
       'current_version' => (int)$test->getCurrentVersion(),
       'ordinal_no'      => 0
     );
@@ -303,6 +303,29 @@ class Project_Model_TestMapper extends Custom_Model_Mapper_Abstract
       return false;
     }
   }
+
+    public function addOtherTestGroup(Application_Model_Test $test)
+    {
+        $db = $this->_getDbTable();
+        $adapter = $db->getAdapter();
+        $test->setStatus(Application_Model_TestStatus::TEST_GROUP);
+        $test->setType(Application_Model_TestType::TEST_GROUP);
+
+        try
+        {
+            $adapter->beginTransaction();
+            $this->addTest($test);
+            $attachmentMapper = new Project_Model_AttachmentMapper();
+            $attachmentMapper->saveTest($test);
+            return $adapter->commit();
+        }
+        catch (Exception $e)
+        {
+            Zend_Registry::get('Zend_Log')->log($e->getMessage(), Zend_Log::ERR);
+            $adapter->rollback();
+            return false;
+        }
+    }
   
   public function addTestCase(Application_Model_TestCase $testCase)
   {

@@ -20,6 +20,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 The full text of the GPL is in the LICENSE file.
 */
+error_reporting(E_ALL|E_STRICT);
+ini_set('display_errors', 'on');
 require_once realpath(dirname(__FILE__) . '/../const.php');
 require_once realpath(dirname(__FILE__) . '/../application/const.php');
 require_once _ROOT_DIR.DIRECTORY_SEPARATOR.'const.php';
@@ -29,6 +31,7 @@ require_once _UTILS_PATH.'/Text.php';
 Utils_Text::checkMagicQuotes();
 
 header("Cache-Control: server");
+
 
 // Ensure library/ is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(

@@ -1119,7 +1119,8 @@ CREATE TABLE `test_status` (
 
 INSERT INTO `test_status` (`id`, `name`) VALUES
 (1, 'ACTIVE'),
-(2, 'DELETED');
+(2, 'DELETED'),
+(3, 'TEST_GROUP');
 
 -- --------------------------------------------------------
 
@@ -1139,6 +1140,7 @@ CREATE TABLE `test_type` (
 INSERT INTO `test_type` (`id`, `name`) VALUES
 (4, 'AUTOMATIC TEST'),
 (5, 'CHECKLIST'),
+(6, 'TEST_GROUP'),
 (3, 'EXPLORATORY_TEST'),
 (1, 'OTHER_TEST'),
 (2, 'TEST_CASE');

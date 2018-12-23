@@ -1,4 +1,5 @@
 <?php
+
 /*
 Copyright © 2014 TestArena 
 
@@ -20,19 +21,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 The full text of the GPL is in the LICENSE file.
 */
+
 class Application_Model_TestType extends Custom_Model_Dictionary_Abstract
 {
-  const OTHER_TEST        = 1;
-  const TEST_CASE         = 2;
-  const EXPLORATORY_TEST  = 3;
-  const AUTOMATIC_TEST    = 4;
-  const CHECKLIST         = 5;
-  
-  protected $_names = array(
-    self::OTHER_TEST        => 'OTHER_TEST',
-    self::TEST_CASE         => 'TEST_CASE',
-    self::EXPLORATORY_TEST  => 'EXPLORATORY_TEST',
-    self::AUTOMATIC_TEST    => 'AUTOMATIC_TEST',
-    self::CHECKLIST         => 'CHECKLIST'
-  );
+    const OTHER_TEST = 1;
+    const TEST_CASE = 2;
+    const EXPLORATORY_TEST = 3;
+    const AUTOMATIC_TEST = 4;
+    const CHECKLIST = 5;
+    const TEST_GROUP = 6;
+
+    protected $_names = array(
+        self::OTHER_TEST => 'OTHER_TEST',
+        self::TEST_CASE => 'TEST_CASE',
+        self::EXPLORATORY_TEST => 'EXPLORATORY_TEST',
+        self::AUTOMATIC_TEST => 'AUTOMATIC_TEST',
+        self::CHECKLIST => 'CHECKLIST',
+        self::TEST_GROUP => 'TEST_GROUP'
+    );
 }

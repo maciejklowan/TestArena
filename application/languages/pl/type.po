@@ -34,6 +34,9 @@ msgstr "Programista"
 msgid "TEST_OTHER_TEST"
 msgstr "Inny test"
 
+msgid "TEST_OTHER_TEST_GROUP"
+msgstr "Grupę testową"
+
 msgid "TEST_TEST_CASE"
 msgstr "Przypadek testowy"
 

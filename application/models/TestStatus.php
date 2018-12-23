@@ -24,9 +24,11 @@ class Application_Model_TestStatus extends Custom_Model_Dictionary_Abstract
 {
   const ACTIVE  = 1;
   const DELETED = 2;
-  
+  const TEST_GROUP = 3;
+
   protected $_names = array(
     self::ACTIVE  => 'ACTIVE',
-    self::DELETED => 'DELETED'
+    self::DELETED => 'DELETED',
+    self::TEST_GROUP => 'TEST_GROUP'
   );
 }

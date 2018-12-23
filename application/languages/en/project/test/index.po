@@ -35,6 +35,9 @@ msgstr "Checklist"
 msgid "Inny test"
 msgstr "Other test"
 
+msgid "Grupę testową"
+msgstr "Test group"
+
 msgid "Nr obiektu"
 msgstr "Object number"
 

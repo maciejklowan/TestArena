@@ -35,6 +35,9 @@ msgstr "Listę kontrolną"
 msgid "Inny test"
 msgstr "Inny test"
 
+msgid "Grupę testową"
+msgstr "Grupę testową"
+
 msgid "Nr obiektu"
 msgstr "Nr obiektu"
 

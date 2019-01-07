@@ -35,3 +35,9 @@
 !public/upload/avatars/user/temp/.gitkeep
 #
 /vendor
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/testArena.iml
+.idea/php.xml
+.idea/modules.xml
+docker/mysql/.data/

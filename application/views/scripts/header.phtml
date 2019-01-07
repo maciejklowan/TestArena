@@ -35,6 +35,7 @@
       ->appendFile($this->baseUrl('/js/chosen.jquery.js'))
       ->appendFile($this->baseUrl('/js/spectrum.js'))
       ->appendFile($this->baseUrl('/js/popbox.js'))
+      ->appendFile('//cdn.ckeditor.com/4.11.1/basic/ckeditor.js')
       ->appendFile($this->baseUrl('/js/global.js?'.APP_VERSION))?>  
   
     <?php if ($this->cModule == 'dashboard' && $this->cController == 'index' && $this->cAction == 'index'): ?>
